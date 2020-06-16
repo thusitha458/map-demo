@@ -14,7 +14,7 @@ const MinComponent = ({ results, raster, geometry, execute, func }) => (
     />
     <ToolContent>
       <DrawGeometry />
-      <ImportGeometry />
+      {/* <ImportGeometry /> */}
       <div className='content-row submit-row'>
         <button
           className='gt-button-accent full'
@@ -31,7 +31,7 @@ const MinComponent = ({ results, raster, geometry, execute, func }) => (
         </ToolResults>
       }
     </ToolContent>
-    <ToolFooter />
+    {/* <ToolFooter /> */}
   </div>
 );
 

@@ -4,11 +4,11 @@ import ToolButton from '../tool-button';
 
 const MenuComponent = ({ toolList, menuFocus, searchTools, onSubmit, focus }) => (
   <div id='menu'>
-    <header id='menu-header'>
+    {/* <header id='menu-header'>
       <span className='menu-header-icon'></span>
       <h3>{SITE_CONFIG.title}</h3>
-    </header>
-    <section
+    </header> */}
+    {/* <section
       id='search'
       onClick={focus}
     >
@@ -22,7 +22,7 @@ const MenuComponent = ({ toolList, menuFocus, searchTools, onSubmit, focus }) =>
           type='text'
         />
       </form>
-    </section>
+    </section> */}
     <section
       className={menuFocus ? 'focus' : ''}
       id='content'

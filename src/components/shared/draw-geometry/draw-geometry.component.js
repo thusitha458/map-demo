@@ -2,20 +2,20 @@ import React from 'react';
 
 const DrawGeometryComponent = ({ drawing, draw }) => (
   <div className='draw-geometry'>
-    <p>Draw Geometry on map</p>
+    {/* <p>Draw Geometry on map</p> */}
     <div className='content-row'>
       <button
-        className={`gt-button-primary ${drawing === 'rectangle' ? 'active' : ''}`}
+        className={`gt-button-primary full ${drawing === 'rectangle' ? 'active' : ''}`}
         onClick={() => draw('rectangle')}
       >
-        Rectangle
+        Draw Rectangle
       </button>
-      <button
+      {/* <button
         className={`gt-button-primary ${drawing === 'polygon' ? 'active' : ''}`}
         onClick={() => draw('polygon')}
       >
         Polygon
-      </button>
+      </button> */}
     </div>
   </div>
 );

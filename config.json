@@ -15,18 +15,11 @@
     "light": "url('/images/logomark-light.svg')"
   },
   "resolution": "",
-  "title": "GeoTIFF.io",
+  "title": "Demo",
   "tools": [
-    "band-arithmetic",
-    "histogram",
-    "identify",
-    "load",
     "max",
     "mean",
-    "median",
     "min",
-    "mode",
-    "raster-calculator",
     "sum"
   ]
 }

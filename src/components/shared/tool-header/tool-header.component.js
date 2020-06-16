@@ -8,12 +8,12 @@ const ToolHeaderComponent = ({ logoURL, title, close, focus}) => (
         <i className="material-icons">arrow_back</i>
         <span>Back</span>
       </Link>
-      <i className="geotiff-logo"></i>
+      {/* <i className="geotiff-logo"></i> */}
     </div>
-    <div className="header-title-row">
+    {/* <div className="header-title-row">
       <span className="tool-icon" style={{backgroundImage: `url(${logoURL}`}}></span>
       <p>{title}</p>
-    </div>
+    </div> */}
   </header>
 );
 
