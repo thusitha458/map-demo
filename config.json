@@ -8,7 +8,7 @@
     "accent-color-light": "rgba(49, 185, 141, .3)",
     "secondary-color": "#13293D"
   },
-  "domain": "ec2-100-26-157-30.compute-1.amazonaws.com",
+  "domain": "gic.rootcode.software",
   "google_analytics_id": "UA-73811343-5",
   "logo": {
     "dark": "url('/images/logomark-dark.svg')",
