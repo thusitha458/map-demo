@@ -32,19 +32,23 @@ export const loadState = compose(
     loadRaster: ({ urlInput, fileInput, addRaster, showAlert }) => () => {
       return new Promise((resolve, reject) => {
         try {
-          if (urlInput !== '' ) {
-            if (urlIsValid(urlInput)) {
-              addRaster(urlInput);
-              resolve(true);
-            } else {
-              showAlert('Please make sure you are using a valid url. It must start with either http or https.');
-            }
-          } else if (fileInput !== '') {
-            addRaster(fileInput);
-            resolve(true);
-          } else {
-            showAlert('Please add either a url or a geotiff file');
-          }
+          addRaster(fileInput);
+          resolve(true);
+          // if (urlInput !== '' ) {
+          //   if (urlIsValid(urlInput)) {
+          //     addRaster(urlInput);
+          //     resolve(true);
+          //   } else {
+          //     showAlert('Please make sure you are using a valid url. It must start with either http or https.');
+          //   }
+          // } else if (fileInput !== '') {
+          //   addRaster(fileInput);
+          //   resolve(true);
+          // } else {
+          //   addRaster(fileInput);
+          //   resolve(true);
+          //   // showAlert('Please add either a url or a geotiff file');
+          // }
         } catch (e) {
           showAlert('The raster you tried to load is not a valid geotiff. Please try again with a different file.');
           reject();

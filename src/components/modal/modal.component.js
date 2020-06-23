@@ -21,18 +21,11 @@ const ModalComponent = ({
       </i>
     </header>
     <section className='content'>
-      <div className="gt-input">
-        <input
-          type="file"
-          onChange={updateFileInput}
-        />
-      </div>
-      <br />
       <button
         className='gt-button-accent full'
         onClick={loadRasterAndCloseModal}
       >
-        GO
+        LOAD RASTER FROM DB
       </button>
     </section>
   </Modal>

@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 
 const execute = (raster, geometry, func) => {
   let geojson = geometry.toGeoJSON();
+  console.log('GEO JSON', geojson);
   let results = func(raster, geojson);
   return setResults(results);
 }
@@ -17,10 +18,11 @@ const execute = (raster, geometry, func) => {
 const mapDispatchToProps = dispatch => {
   return {
     execute: (raster, geometry, func) => {
-      if (!raster) {
-        dispatch(showAlert('Please make sure a geotiff is loaded before running this tool. You can load a geotiff using the Load Tool."'));
-        return;
-      }
+      console.log('ACTION', geometry);
+      // if (!raster) {
+      //   dispatch(showAlert('Please make sure a geotiff is loaded before running this tool. You can load a geotiff using the Load Tool."'));
+      //   return;
+      // }
       if (!geometry) {
         dispatch(showAlert('Please draw an area of interest or import a GeoJSON file before running this tool.'));
         return;

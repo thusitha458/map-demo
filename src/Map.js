@@ -25,8 +25,8 @@ const Map = {
     store = window.store;
 
     // add map
-    map = L.map('map').setView([0, 0], 2);
-    map.options.minZoom = 2;
+    map = L.map('map').setView([28.3949, 84.1240], 5);
+    map.options.minZoom = 5;
 
     // add draw controls
     const drawOptions = {

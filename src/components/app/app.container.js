@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 const setLayout = () => {
   const hideMenu = ["", "true", "True", "y", "Y", "yes", "Yes"]
     .includes(UrlService.get("hide_menu")) || false;
-  if (hideMenu) {
+  // if (hideMenu) {
     return setHideMenuLayout();
-  } else {
-    return setDefaultLayout();
-  }
+  // } else {
+  //   return setDefaultLayout();
+  // }
 }
 
 const mapStateToProps = ({ layout}) => ({ layout });

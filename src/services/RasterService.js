@@ -3,6 +3,8 @@
 import geoblaze from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
 
+const L = window.L;
+
 const getResolution = () => {
   const resolution = Number(new URLSearchParams(window.location.search).get('resolution'))
   if (resolution) {
@@ -28,39 +30,53 @@ const getResolution = () => {
 
 const RasterService = {
 
-  createRaster(input) {
+  createRaster() {
 
     /* check for Github URL and switch to cors-enabled version
     https://github.com/GeoTIFF/geotiff.io/blob/master/assets/data/PuertoRicoTropicalFruit.tiff
     to:
     https://raw.githubusercontent.com/GeoTIFF/geotiff.io/master/assets/data/PuertoRicoTropicalFruit.tiff
     */
-    if (typeof input === "string") {
-      if (input.match(/^https\:\/\/github\.com\/.*\/.*\/blob\/.*\/.*.tiff?$/i)) {
-        input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "");
-        console.warn("Changed URL to " + input + " which is CORS-enabled");
-      } else if (input.match(/^https\:\/\/github\.com\/.*\/.*\/blob\/.*\/.*.tiff?\?raw\=true$/i)) {
-        input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "").replace("?raw=true","");
-        console.warn("Changed URL to " + input + " which is CORS-enabled");
-      } else if (input.match(/^https\:\/\/github\.com\/.*\/.*\/raw\/.*\/.*.tiff?$/i)) {
-        input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/raw/", "/");
-        console.warn("Changed URL to " + input + " which is CORS-enabled");
-      }
-    }
+    // if (typeof input === "string") {
+    //   if (input.match(/^https\:\/\/github\.com\/.*\/.*\/blob\/.*\/.*.tiff?$/i)) {
+    //     input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "");
+    //     console.warn("Changed URL to " + input + " which is CORS-enabled");
+    //   } else if (input.match(/^https\:\/\/github\.com\/.*\/.*\/blob\/.*\/.*.tiff?\?raw\=true$/i)) {
+    //     input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob", "").replace("?raw=true","");
+    //     console.warn("Changed URL to " + input + " which is CORS-enabled");
+    //   } else if (input.match(/^https\:\/\/github\.com\/.*\/.*\/raw\/.*\/.*.tiff?$/i)) {
+    //     input = input.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/raw/", "/");
+    //     console.warn("Changed URL to " + input + " which is CORS-enabled");
+    //   }
+    // }
 
     return new Promise((resolve, reject) => {
-      geoblaze.load(input)
-        .then(georaster => {
-          let options = {
-            georaster: georaster,
-            opacity: 0.7,
-            resolution: getResolution()
-          };
-          const raster = new GeoRasterLayer(options);
-          resolve(raster);
-        }, error => {
-          reject(error);
-        });
+      const layer = L.tileLayer.wms('http://165.22.50.235:8087/geoserver/wms'/*'http://localhost:8080/geoserver/wms'*//*'http://ows.mundialis.de/services/service?'*/, {
+        // layers: 'TOPO-OSM-WMS',
+        // layers: 'cite:oek',
+        layers: 'cite:srtm',
+        opacity: 0.6,
+        resolution: getResolution(),
+      });
+      // console.log('layer.....', layer);
+      resolve(layer);
+      // geoblaze.load(input)
+      //   .then(georaster => {
+      //     let options = {
+      //       georaster: georaster,
+      //       opacity: 0.7,
+      //       resolution: getResolution()
+      //     };
+      //     const raster = new GeoRasterLayer(options);
+      //     const layer = L.tileLayer.wms('http://localhost:8080/geoserver/wms'/*'http://ows.mundialis.de/services/service?'*/, {
+      //       // layers: 'TOPO-OSM-WMS',
+      //       // layers: 'cite:oek',
+      //       layers: 'cite:srtm_53_07',
+      //     });
+      //     resolve(layer);
+      //   }, error => {
+      //     reject(error);
+      //   });
     });
   },
 
